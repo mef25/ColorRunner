@@ -1,38 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using GoogleMobileAds.Api;
 using GoogleMobileAds;
 
 public class admob2 : MonoBehaviour
 {
-    
     void Start()
     {
         MobileAds.Initialize((InitializationStatus initStatus) =>
         {
-
-        });
         
+        });
     }
 
-    // These ad units are configured to always serve test ads.
 #if UNITY_ANDROID
-    private string _adUnitId = "ca-app-pub-9618593531319351/7747217440";
+    private string _adUnitId = "ca-app-pub-9618593531319351/774721";
 #elif UNITY_IPHONE
-  private string _adUnitId = "ca-app-pub-3940256099942544/4411468910";
+  private string _adUnitId = "ca-app-pub-3940256099942544/4411469";
 #else
   private string _adUnitId = "unused";
 #endif
 
     private InterstitialAd _interstitialAd;
-
-    /// <summary>
-    /// Loads the interstitial ad.
-    /// </summary>
     public void LoadLoadInterstitialAd()
     {
-        // Clean up the old ad before loading a new one.
         if (_interstitialAd != null)
         {
             _interstitialAd.Destroy();
@@ -40,15 +30,11 @@ public class admob2 : MonoBehaviour
         }
 
         Debug.Log("Loading the interstitial ad.");
-
-        // create our request used to load the ad.
         var adRequest = new AdRequest();
 
-        // send the request to load the ad.
         InterstitialAd.Load(_adUnitId, adRequest,
             (InterstitialAd ad, LoadAdError error) =>
             {
-                // if error is not null, the load request failed.
                 if (error != null || ad == null)
                 {
                     Debug.LogError("interstitial ad failed to load an ad " +
@@ -61,7 +47,6 @@ public class admob2 : MonoBehaviour
 
                 _interstitialAd = ad;
             });
-        
     }
     public void ShowInterstitialAd()
     {
@@ -75,6 +60,4 @@ public class admob2 : MonoBehaviour
             Debug.LogError("Interstitial ad is not ready yet.");
         }
     }
-    
-
 }
