@@ -7,7 +7,6 @@ using System.Runtime.CompilerServices;
 
 public class randomYazi : MonoBehaviour
 {
-
     public GameObject duvar, dogruDuvar, yanlisDuvar;
     public TextMeshPro renktext, yanlistext;
     private string[] renkler = {"BLACK", "BLUE","CYAN","GREEN","GREY","PINK","RED","YELLOW","BROWN","PURPLE", "ORANGE" };
@@ -15,8 +14,6 @@ public class randomYazi : MonoBehaviour
     public Color[] renk = { Color.black,Color.blue,Color.cyan,Color.green,Color.grey,Color.magenta,Color.red,Color.yellow, new Color32(58,9,9,255),
                               new Color32(75,0,130,255),new Color32(255,101,9,255)};
     
-
-
     public void Start()
     {
         duvar.GetComponent<MeshRenderer>().material.color = renk[UnityEngine.Random.Range(0, renk.Length)];
