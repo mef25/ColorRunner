@@ -7,14 +7,10 @@ public class player : admob2
     bool oyunbittimi=false;
     public CharacterController characterController;
     private float speed =15f;
-   
-    
-    
+     
     void Start()
     {
         LoadLoadInterstitialAd();
-        
-        
         Application.targetFrameRate = 60;
         characterController = GetComponent<CharacterController>();
         if (GetComponent<Transform>().position.z > 75)//3-4
@@ -25,11 +21,8 @@ public class player : admob2
             speed = 30f;
         if (GetComponent<Transform>().position.z > 1200)//10
             speed = 35f;
-        
-       
     }
-
-
+    
     void Update()
     {
         Vector3 ileri = new Vector3(0, 0, 1);
@@ -42,11 +35,8 @@ public class player : admob2
             {
                 Vector3 hareket = new Vector3(parmak.deltaPosition.x, 0, 0);
                 characterController.Move(hareket * Time.deltaTime * 1);
-
             }
-
         }
-
     }
                
     private void OnTriggerEnter(Collider other)
@@ -73,15 +63,14 @@ public class player : admob2
             sonrakilevelkontrolu();
             Invoke("levelsecimi", 2f);
         }
-        
-        
     }
+    
     public void sonrakilevelkontrolu()
     {
         string currentlevel = PlayerPrefs.GetString("suankisecilenlevel");
         int currentlevelid = int.Parse(currentlevel.Split("LEVEL")[1]);
         int nextlevel = PlayerPrefs.GetInt("level") + 1;
-        if (currentlevelid == PlayerPrefs.GetInt("seviyeSayýsý"))
+        if (currentlevelid == PlayerPrefs.GetInt("seviyeSayÃ½sÃ½"))
             Debug.Log("Finish");
         else
         {
@@ -91,16 +80,15 @@ public class player : admob2
                 Debug.Log("Restart Level");
         }
     }
+    
     private void hata()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         oyunbittimi = false;
     }
+    
     private void levelsecimi()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-   
-
- 
 }
