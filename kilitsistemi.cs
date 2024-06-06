@@ -1,5 +1,3 @@
-
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,8 +9,8 @@ public class kilitsistemi : MonoBehaviour
     {
         if (!PlayerPrefs.HasKey("level"))
             PlayerPrefs.SetInt("level", 1);
-        if (!PlayerPrefs.HasKey("seviyeSayısı"))
-            PlayerPrefs.SetInt("seviyeSayısı", leveller.Count);
+        if (!PlayerPrefs.HasKey("seviyeSayÃ½sÃ½"))
+            PlayerPrefs.SetInt("seviyeSayÃ½sÃ½", leveller.Count);
         kilitleriAc();
     }
 
